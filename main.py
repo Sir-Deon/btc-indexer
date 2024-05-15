@@ -52,7 +52,7 @@ def continualy_get_mempool():
             transaction["amount"] =  transaction_details["vout"][0]["value"]
             transaction["weight"] =  transaction_details["weight"]
             transaction["version"] =  transaction_details["version"]
-            # Store in the db
+            # Store transaction in the db
             put_data(transaction)
             monitor_address = get_data("monitored_address")
             if monitor_address == transaction["receiver_address"] or monitor_address == transaction["sender_address"] :
