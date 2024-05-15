@@ -1,6 +1,6 @@
 # Bitcoin transaction indexer
 
-This is a bitcoin indexer 
+This is my first bitcoin transaction indexer 
 
 ## Installation
 
