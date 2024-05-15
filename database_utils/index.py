@@ -6,6 +6,7 @@ env = lmdb.open('../database', max_dbs=10)
 
 
 def put_data(data, key=None):
+    print(f"Data to store {data}")
     if key is None:
         key_bytes = data["hash"].encode('utf-8')
         data_bytes = json.dumps(data).encode('utf-8')
@@ -15,6 +16,7 @@ def put_data(data, key=None):
             txn.put(key_bytes, data_bytes)
         # Close the LMDB environment
         store_key(data["hash"])
+        return
     else:
         key_bytes = key.encode('utf-8')
         data_bytes = data.encode('utf-8')
@@ -51,7 +53,7 @@ def delete_data(key):
 
 
 def store_key(key):
-    file_path = "../database/keys.json"
+    file_path = "database/keys.json"
     try:
         with open(file_path, "r") as file:
             # Load the existing JSON data

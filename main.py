@@ -14,6 +14,16 @@ MONITORED_ADDRESS = os.getenv('MONITORED_ADDRESS')
 
 put_data(MONITORED_ADDRESS, "monitored_address")
 
+def call_webhook(data):
+    # Send a POST request to the webhook endpoint
+    response = requests.post(WEBHOOK_URL, json=data)
+
+    # Check the response status code
+    if response.status_code == 200:
+        print("Webhook request successful!")
+    else:
+        print(f"Webhook request failed with status code: {response.status_code}")
+
 # This function is responsible for periodically getting new blocks
 def continualy_get_blocks():
     # Retrieve new blocks
@@ -39,18 +49,15 @@ def continualy_get_mempool():
     print("Retrieving mempool data...")
     latest_transaction_hash = get_mempool_data()[-1]
     while True:
-        current_transaction_hash =  get_mempool_data()[-1]
-        transaction_details = get_transaction_details(current_transaction_hash)
-        print(json.dumps(transaction_details))
-        
+        current_transaction_hash =  get_mempool_data()[-1]        
         if current_transaction_hash != latest_transaction_hash:
             latest_transaction_hash = current_transaction_hash
 
             transaction_details = get_transaction_details(latest_transaction_hash)
-   
             # Puting the transaction details into the transaction
+            sender_address = get_sender_address(transaction_details["txid"])
             transaction["hash"] = transaction_details["hash"]
-            transaction["sender_address"] = get_sender_address(transaction_details["txid"])
+            transaction["sender_address"] = sender_address
             transaction["receiver_address"] = transaction_details["vout"][0]["scriptPubKey"]["address"]
             transaction["amount"] =  transaction_details["vout"][0]["value"]
             transaction["weight"] =  transaction_details["weight"]
@@ -72,12 +79,4 @@ def continualy_get_mempool():
 continualy_get_mempool()
 
 
-def call_webhook(data):
-    # Send a POST request to the webhook endpoint
-    response = requests.post(WEBHOOK_URL, json=data)
 
-    # Check the response status code
-    if response.status_code == 200:
-        print("Webhook request successful!")
-    else:
-        print(f"Webhook request failed with status code: {response.status_code}")
