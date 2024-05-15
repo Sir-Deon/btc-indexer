@@ -12,7 +12,6 @@ load_dotenv()
 WEBHOOK_URL = os.getenv('WEBHOOK_URL')
 MONITORED_ADDRESS = os.getenv('MONITORED_ADDRESS')
 
-print(WEBHOOK_URL)
 put_data(MONITORED_ADDRESS, "monitored_address")
 
 # This function is responsible for periodically getting new blocks
