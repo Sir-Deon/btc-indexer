@@ -63,14 +63,14 @@ def continualy_get_mempool():
                     "address": monitor_address,
                     "type": "received" if monitor_address == transaction["receiver_address"]  else "sent"
                 }
-                send_notification(notification)
+                call_webhook(notification)
 
         time.sleep(1)
 
 continualy_get_mempool()
 
 
-def send_notification(data):
+def call_webhook(data):
     # Send a POST request to the webhook endpoint
     response = requests.post(WEBHOOK_URL, json=data)
 
