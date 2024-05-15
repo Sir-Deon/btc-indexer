@@ -19,13 +19,13 @@ A brief description of your project.
 3. Create a virtual environment (optional but recommended):
 
    ```bash
-   conda create virtualenv
+   conda create bitcoin_indexer
    ```
 
 4. Activate the virtual environment:
 
     ```bash
-   conda activate virtualenv
+   conda activate bitcoin_indexer
    ```
 
 5. Install the project dependencies from the requirements.txt file:
