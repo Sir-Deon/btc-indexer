@@ -1,6 +1,6 @@
 # Bitcoin transaction indexer
 
-This is my first bitcoin transaction indexer 
+This is my first bitcoin transaction indexer
 
 ## Installation
 
@@ -24,7 +24,7 @@ This is my first bitcoin transaction indexer
 
 4. Activate the virtual environment:
 
-    ```bash
+   ```bash
    conda activate bitcoin_indexer
    ```
 
@@ -42,10 +42,13 @@ This is my first bitcoin transaction indexer
    python main.py
    ```
 
+## Note
+
+Upon executing the code, a file named "keys.json" will be generated within the "./database/" directory. This file consists of transaction hashes that can be utilized for retrieving transaction specifics from the database.
+
 ## Resources
 
 I made use of the following resources
 
 1. I used RPC API from https://getblock.io
 2. I also made use of a key value pair dm called lmdb, because i had issues installing rocksdb
-
