@@ -12,8 +12,10 @@ load_dotenv()
 WEBHOOK_URL = os.getenv('WEBHOOK_URL')
 MONITORED_ADDRESS = os.getenv('MONITORED_ADDRESS')
 
+print(WEBHOOK_URL)
 put_data(MONITORED_ADDRESS, "monitored_address")
 
+# This function is responsible for periodically getting new blocks
 def continualy_get_blocks():
     # Retrieve new blocks
     print("Retrieving blocks...")
@@ -32,6 +34,7 @@ def continualy_get_blocks():
         time.sleep(1)  # Wait for 1 second before checking for new blocks
 
 
+# This function periodically gets transaction from mempool
 def continualy_get_mempool():
     # Retrieve mempool data
     print("Retrieving mempool data...")

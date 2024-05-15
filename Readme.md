@@ -1,6 +1,6 @@
 # Bitcoin transaction indexer
 
-A brief description of your project.
+This is a bitcoin indexer 
 
 ## Installation
 
@@ -41,3 +41,11 @@ A brief description of your project.
    ```bash
    python main.py
    ```
+
+## Resources
+
+I made use of the following resources
+
+1. I used RPC API from https://getblock.io
+2. I also made use of a key value pair dm called lmdb, because i had issues installing rocksdb
+
