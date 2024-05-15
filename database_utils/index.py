@@ -6,7 +6,6 @@ env = lmdb.open('../database', max_dbs=10)
 
 
 def put_data(data, key=None):
-    print(f"Data to store {data}")
     if key is None:
         key_bytes = data["hash"].encode('utf-8')
         data_bytes = json.dumps(data).encode('utf-8')
