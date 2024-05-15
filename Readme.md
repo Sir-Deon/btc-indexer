@@ -1,4 +1,3 @@
-```markdown
 # Bitcoin transaction indexer
 
 A brief description of your project.
