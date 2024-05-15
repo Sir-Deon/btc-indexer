@@ -46,6 +46,7 @@ This is my first bitcoin transaction indexer
 
 1. Upon executing the code, a file named "keys.json" will be generated within the "./database/" directory. This file consists of transaction hashes that can be utilized for retrieving transaction specifics from the database.
 2. The .env file is not added to the .gitignore for evaluation purpose.
+3. The data.json file is an example of a bitcoin transaction
 
 ## Resources
 

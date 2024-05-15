@@ -40,6 +40,9 @@ def continualy_get_mempool():
     latest_transaction_hash = get_mempool_data()[-1]
     while True:
         current_transaction_hash =  get_mempool_data()[-1]
+        transaction_details = get_transaction_details(current_transaction_hash)
+        print(json.dumps(transaction_details))
+        
         if current_transaction_hash != latest_transaction_hash:
             latest_transaction_hash = current_transaction_hash
 
